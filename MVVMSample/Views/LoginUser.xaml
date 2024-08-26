@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MVVMSample.Views.LoginUser"
+             Title="LoginUser"
+             xmlns:helpers="clr-namespace:MVVMSample.Helpers"
+             xmlns:local="clr-namespace:MVVMSample.Views"
+             xmlns:viewModels="clr-namespace:MVVMSample.ViewModels"
+             x:DataType="viewModels:LoginUserPageViewModel" 
+             BackgroundImageSource="animal3_bg.jpg"
+             >
+    <VerticalStackLayout Margin="20"
+                     Spacing="6" >
+
+        <Label Text="Login Page:" FontSize="Large" Margin="20" 
+               VerticalTextAlignment="Start" FontAttributes="Bold" />
+
+        <HorizontalStackLayout Spacing="15">
+            <Label Text="User Name: "
+                 FontSize="18" WidthRequest="90"/>
+            <Frame BorderColor="Black"
+                Padding="5">
+                <Entry  BackgroundColor="Beige" HeightRequest="50" 
+                        WidthRequest="230" Text="{Binding Username}"/>
+            </Frame>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Spacing="15">
+            <Label Text="Password: "
+    FontSize="18"  WidthRequest="90" />
+            <Frame BorderColor="Black" Padding="5">
+                <Entry  BackgroundColor="Beige" HeightRequest="50" 
+                        WidthRequest="230" Text="{Binding Password}"/>
+            </Frame>
+        </HorizontalStackLayout>
+
+        <Button WidthRequest="150" HorizontalOptions="Center" FontSize="18"
+       BackgroundColor="Black" Text="Submit" TextColor="White" 
+                Command="{Binding LoginUserCommand}" IsEnabled="{Binding NoErrors}"
+         />
+
+        <VerticalStackLayout>
+            <!--  הודעת שגיאה  -->
+            <Label TextColor="Red"
+            Text="{Binding ErrorMessageUsr}"
+            IsVisible="{Binding HasErrorUsr}" />
+            <Label TextColor="Red"
+             Text="{Binding ErrorMessagePss}"
+             IsVisible="{Binding HasErrorPss}"
+             HorizontalTextAlignment="Center" />
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+
+
+</ContentPage>
